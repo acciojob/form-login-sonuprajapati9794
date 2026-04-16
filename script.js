@@ -1,27 +1,14 @@
-function getFormvalue(event) {
-      // Prevent page reload
-      event.preventDefault();
+function getFormvalue() {
+  // Get values from inputs
+  let firstName = document.querySelector('input[name="fname"]').value.trim();
+  let lastName = document.querySelector('input[name="lname"]').value.trim();
 
-      // Access form using document.forms
-      let form = document.forms["form1"];
+  // Combine full name
+  let fullName = firstName + " " + lastName;
 
-      // Get values and trim spaces
-      let firstName = form["fname"].value.trim();
-      let lastName = form["lname"].value.trim();
+  // Show alert
+  alert(fullName);
 
-      // Handle empty fields
-      if (firstName === "" || lastName === "") {
-        alert("Please enter both First Name and Last Name");
-        return;
-      }
-
-      // Create full name
-      let fullName = firstName + " " + lastName;
-
-      // Show alert
-      alert(fullName);
-    }
-
-    // Attach event listener (best practice)
-    document.getElementById("form1").addEventListener("submit", getFormvalue);
- 
+  // Prevent form reload (important for Cypress)
+  return false;
+}
